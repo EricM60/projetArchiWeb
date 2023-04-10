@@ -1,0 +1,47 @@
+var utilisateurService = require('./utilisateurService');
+
+var createUtilisateurControllerFn = async (req,res) =>
+{
+    try 
+    {
+        console.log(req.body);
+        var status  = await utilisateurService.createUtilisateurDBService(req.body);
+        console.log(status);
+        if(status)
+        {
+            res.send({ "status":true, "message": "utilisateur creer" });
+        }
+        else
+        {
+            res.send({ "status":false, "message": "erreur dans la creation de l'utilisateur" });
+        }
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+
+}
+
+var loginUtilisateurControllerFn = async (req,res) => {
+    var result = null;
+    try
+    {
+        result = await utilisateurService.loginUtilisateurDBService(req.body);
+        if(result.status)
+        {
+            res.send({ "status":true, "message": "utilisateur connecter"});
+        }
+        else
+        {
+            res.send({ "status":true, "message": "echec de la connexion"});
+        }
+    }
+    catch(error)
+    {
+        console.log(error);
+        res.send({ "status":true, "message": "echec de la connexion"});
+    }
+};
+
+module.exports = {createUtilisateurControllerFn, loginUtilisateurControllerFn};

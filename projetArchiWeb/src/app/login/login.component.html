@@ -1,0 +1,19 @@
+<div class="container mt-4">
+    <div class="card">
+        <h1>connecter vous</h1>
+
+        <form>
+            <div class="form-group">
+                <label>nom</label>
+                <input type="text" [(ngModel)]="nom" [ngModelOptions]="{standalone : true}" class="form-control" id="nomUtilisateur" placeholder="entrer un nom">
+            </div>
+
+            <div class="form-group">
+                <label>mdp</label>
+                <input type="password" [(ngModel)]="mdp" [ngModelOptions]="{standalone : true}" class="form-control" id="mdpUtilisateur" placeholder="entrer un mot de passe">
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-4" (click)="login()">login</button>
+        </form>
+    </div>
+</div>

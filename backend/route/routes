@@ -1,0 +1,9 @@
+var express = require('express');
+
+var utilisateurController = require('../src/utilisateurs/utilisateurController');
+const router = express.Router();
+
+router.route('/utilisateur/login').post(utilisateurController.loginUtilisateurControllerFn);
+router.route('/utilisateur/create').post(utilisateurController.createUtilisateurControllerFn);
+
+module.exports = router;

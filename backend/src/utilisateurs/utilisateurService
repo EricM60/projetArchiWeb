@@ -1,0 +1,48 @@
+const utilisateurModel = require('./utilisateurModel');
+const key = '123456789trytrytry';
+const encryptor = require('simple-encryptor')(key);
+
+module.exports.createUtilisateurDBService = (utilisateurDetails) => {
+  const utilisateurModelData = new utilisateurModel({
+    nom: utilisateurDetails.nom,
+    mdp: encryptor.encrypt(utilisateurDetails.mdp),
+    role: utilisateurDetails.role
+  });
+
+  return utilisateurModelData.save()
+    .then(() => {
+      console.log('Utilisateur enregistré avec succès');
+      return true;
+    })
+    .catch((err) => {
+      console.log('Erreur lors de l\'enregistrement de l\'utilisateur :', err);
+      throw err;
+    });
+}
+
+module.exports.loginUtilisateurDBService = (utilisateurDetails) =>
+{
+  return utilisateurModel.findOne({ nom : utilisateurDetails.nom})
+    .then((result) => {
+      if(result != undefined && result != null)
+      {
+        var decrypted = encryptor.decrypt(result.mdp);
+
+        if(decrypted == utilisateurDetails.mdp)
+        {
+          return {status : true, msg : "ok"};
+        }
+        else
+        {
+          throw {status : false, msg : "mdp invalide"};
+        }
+      }
+      else
+      {
+        throw {status : false, msg : "donnee invalide"};
+      }
+    })
+    .catch((error) => {
+      throw {status : false, msg : "donnee invalide"};
+    });
+}

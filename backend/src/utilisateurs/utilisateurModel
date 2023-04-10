@@ -1,0 +1,20 @@
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var utilisateurSchema = new Schema({
+    nom: {
+      type: String,
+      required: true
+    },
+    mdp: {
+      type: String,
+      required: true
+    },
+    role: {
+      type: String,
+      required: true
+    }
+  }, { collection: 'utilisateur' }); 
+
+
+module.exports = mongoose.model('utilisateur',utilisateurSchema);
