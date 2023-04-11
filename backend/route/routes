@@ -1,6 +1,8 @@
 var express = require('express');
 
 var utilisateurController = require('../src/utilisateurs/utilisateurController');
+var projetController = require('../src/projet/projetController');
+var competenceController = require('../src/competence/competenceController');
 const router = express.Router();
 
 router.route('/utilisateur/login').post(utilisateurController.loginUtilisateurControllerFn);
