@@ -6,4 +6,8 @@ const router = express.Router();
 router.route('/utilisateur/login').post(utilisateurController.loginUtilisateurControllerFn);
 router.route('/utilisateur/create').post(utilisateurController.createUtilisateurControllerFn);
 
+router.route('/projet/create').post(projetController.createProjetControllerFn);
+
+router.route('/competence/create').post(competenceController.createCompetenceControllerFn);
+
 module.exports = router;

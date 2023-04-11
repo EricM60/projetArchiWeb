@@ -1,0 +1,20 @@
+
+const competenceModel = require('./competenceModel');
+
+module.exports.createCompetenceDBService = (competenceDetails) => {
+  const competenceModelData = new competenceModel({
+    nom: competenceDetails.nom,
+    statut: competenceDetails.statut,
+    projet: competenceDetails.projet,
+  });
+
+  return competenceModelData.save()
+    .then(() => {
+      console.log('competence enregistré avec succès');
+      return true;
+    })
+    .catch((err) => {
+      console.log('Erreur lors de l\'enregistrement de competence :', err);
+      throw err;
+    });
+}

@@ -1,0 +1,26 @@
+var competenceService = require('./competenceService');
+
+var createCompetenceControllerFn = async (req,res) =>
+{
+    try 
+    {
+        console.log(req.body);
+        var status  = await utilisateurService.createCompetenceDBService(req.body);
+        console.log(status);
+        if(status)
+        {
+            res.send({ "status":true, "message": "competence creer" });
+        }
+        else
+        {
+            res.send({ "status":false, "message": "erreur dans la creation de competence" });
+        }
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+
+}
+
+module.exports = {createCompetenceControllerFn};

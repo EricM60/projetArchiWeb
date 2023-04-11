@@ -1,0 +1,24 @@
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var projetSchema = new Schema({
+    titre: {
+      type: String,
+      required: true
+    },
+    competences: {
+      type: String,
+      required: true
+    },
+    createur: {
+      type: String,
+      required: true
+    },
+    etudiants: {
+      type: String,
+      required: true
+    }
+  }, { collection: 'projet' }); 
+
+
+module.exports = mongoose.model('projet',projetSchema);

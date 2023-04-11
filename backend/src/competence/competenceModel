@@ -1,0 +1,20 @@
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var competenceSchema = new Schema({
+    nom: {
+      type: String,
+      required: true
+    },
+    statut: {
+      type: String,
+      required: true
+    },
+    projet: {
+      type: String,
+      required: true
+    }
+  }, { collection: 'competences' }); 
+
+
+module.exports = mongoose.model('competences',competenceSchema);

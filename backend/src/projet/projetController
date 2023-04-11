@@ -1,0 +1,26 @@
+var projetService = require('./projetService');
+
+var createProjetControllerFn = async (req,res) =>
+{
+    try 
+    {
+        console.log(req.body);
+        var status  = await utilisateurService.createProjetDBService(req.body);
+        console.log(status);
+        if(status)
+        {
+            res.send({ "status":true, "message": "projet creer" });
+        }
+        else
+        {
+            res.send({ "status":false, "message": "erreur dans la creation du projet" });
+        }
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+
+}
+
+module.exports = {createProjetControllerFn};

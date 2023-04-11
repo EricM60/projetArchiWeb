@@ -1,0 +1,20 @@
+const projetModel = require('./projetModel');
+
+module.exports.createProjetDBService = (projetDetails) => {
+  const projetModelData = new projetModel({
+    titre: projetDetails.titre,
+    competences: projetDetails.competences,
+    createur: projetDetails.createur,
+    etudiants: projetDetails.etudiants,
+  });
+
+  return projetModelData.save()
+    .then(() => {
+      console.log('projet enregistré avec succès');
+      return true;
+    })
+    .catch((err) => {
+      console.log('Erreur lors de l\'enregistrement du projet :', err);
+      throw err;
+    });
+}
