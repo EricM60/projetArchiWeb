@@ -44,4 +44,39 @@ var loginUtilisateurControllerFn = async (req,res) => {
     }
 };
 
-module.exports = {createUtilisateurControllerFn, loginUtilisateurControllerFn};
+var getAllUtilisateurControllerFn = async (req, res) => {
+    var result = null;
+    try
+    {
+        result = await utilisateurService.getAllUtilisateursDBService({});
+        res.send(result);
+    }
+    catch(error)
+    {
+        console.log(error);
+        res.status(500).send(error);
+    }
+};
+
+var deleteUtilisateurControllerFn = async (req,res) => {
+    var result = null;
+    try
+    {
+        result = await utilisateurService.deleteUtilisateurDBService(req.body);
+        if(result.status)
+        {
+            res.send({ "status":true, "message": "utilisateur connecter"});
+        }
+        else
+        {
+            res.send({ "status":true, "message": "echec de la connexion"});
+        }
+    }
+    catch(error)
+    {
+        console.log(error);
+        res.send({ "status":true, "message": "echec de la connexion"});
+    }
+};
+
+module.exports = {createUtilisateurControllerFn, loginUtilisateurControllerFn,getAllUtilisateurControllerFn,deleteUtilisateurControllerFn};

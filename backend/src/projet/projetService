@@ -18,3 +18,32 @@ module.exports.createProjetDBService = (projetDetails) => {
       throw err;
     });
 }
+
+module.exports.findAllProjetsDBService = () => {
+  return projetModel.find({})
+    .then((projetData) => {
+      console.log('Liste des projets :', projetData);
+      return projetData;
+    })
+    .catch((err) => {
+      console.log('Erreur lors de la recherche des projets :', err);
+      throw err;
+    });
+}
+
+module.exports.deleteProjetByTitreDBService = (titre) => {
+  return projetModel.deleteOne({ titre: titre })
+    .then((result) => {
+      if (result.deletedCount > 0) {
+        console.log('Projet supprimé avec succès');
+        return true;
+      } else {
+        console.log('Projet non trouvé');
+        return false;
+      }
+    })
+    .catch((err) => {
+      console.log('Erreur lors de la suppression du projet :', err);
+      throw err;
+    });
+}

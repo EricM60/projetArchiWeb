@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { RegisterComponent } from './register/register.component';
 import { ProjEnseignantComponent } from './proj-enseignant/proj-enseignant.component';
+import { ListUtilisateursComponent } from './list-utilisateurs/list-utilisateurs.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path: 'registerProjet',
     component : ProjEnseignantComponent
+  },
+
+  {
+    path: 'utilisateurs',
+    component : ListUtilisateursComponent
   },
 
 ];

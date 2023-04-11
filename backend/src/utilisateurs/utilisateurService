@@ -46,3 +46,31 @@ module.exports.loginUtilisateurDBService = (utilisateurDetails) =>
       throw {status : false, msg : "donnee invalide"};
     });
 }
+
+module.exports.getAllUtilisateursDBService = () => {
+  return utilisateurModel.find()
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      console.log('Erreur lors de la récupération de tous les utilisateurs :', err);
+      throw err;
+    });
+}
+
+module.exports.deleteUtilisateurDBService = (nomUtilisateur) => {
+  return utilisateurModel.deleteOne({ nom: nomUtilisateur })
+    .then((result) => {
+      if (result.deletedCount === 1) {
+        console.log('Utilisateur supprimé avec succès');
+        return true;
+      } else {
+        console.log('Utilisateur non trouvé');
+        return false;
+      }
+    })
+    .catch((err) => {
+      console.log('Erreur lors de la suppression de l\'utilisateur :', err);
+      throw err;
+    });
+}

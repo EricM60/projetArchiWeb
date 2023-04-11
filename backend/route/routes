@@ -8,6 +8,34 @@ const router = express.Router();
 router.route('/utilisateur/login').post(utilisateurController.loginUtilisateurControllerFn);
 router.route('/utilisateur/create').post(utilisateurController.createUtilisateurControllerFn);
 
+// Route pour récupérer tous les utilisateurs
+router.get('/utilisateurs', (req, res) => {
+  utilisateurController.getAllUtilisateurControllerFn(req, res)
+      .then((result) => {
+        console.log(result)
+        res.json(result);
+      })
+      .catch((err) => {
+        res.status(500).json({ message: err.message });
+      });
+});
+  
+  // Route pour supprimer un utilisateur
+  router.delete('/utilisateurs/:nomUtilisateur', (req, res) => {
+    const nomUtilisateur = req.params.nomUtilisateur;
+    utilisateurController.deleteUtilisateurDBService(nomUtilisateur)
+      .then((result) => {
+        if (result === true) {
+          res.json({ message: 'Utilisateur supprimé avec succès' });
+        } else {
+          res.status(404).json({ message: 'Utilisateur non trouvé' });
+        }
+      })
+      .catch((err) => {
+        res.status(500).json({ message: err.message });
+      });
+  });
+
 router.route('/projet/create').post(projetController.createProjetControllerFn);
 
 router.route('/competence/create').post(competenceController.createCompetenceControllerFn);
