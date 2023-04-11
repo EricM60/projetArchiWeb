@@ -4,18 +4,23 @@
 
         <form>
             <div class="form-group">
-                <label>nom</label>
-                <input type="text" [(ngModel)]="nom" [ngModelOptions]="{standalone : true}" class="form-control" id="nomUtilisateur" placeholder="entrer un nom">
+                <label>titre</label>
+                <input type="text" [(ngModel)]="titre" [ngModelOptions]="{standalone : true}" class="form-control" id="titreProjet" placeholder="entrer un titre">
             </div>
 
             <div class="form-group">
-                <label>mdp</label>
-                <input type="password" [(ngModel)]="mdp" [ngModelOptions]="{standalone : true}" class="form-control" id="mdpUtilisateur" placeholder="entrer un mot de passe">
+                <label>competences</label>
+                <input type="text" [(ngModel)]="competences" [ngModelOptions]="{standalone : true}" class="form-control" id="competencesProjet" placeholder="entrer une competences">
             </div>
 
             <div class="form-group">
-                <label>role</label>
-                <input type="text" [(ngModel)]="role" [ngModelOptions]="{standalone : true}" class="form-control" id="roleUtilisateur" placeholder="entrer un rôle">
+                <label>createur</label>
+                <input type="text" [(ngModel)]="createur" [ngModelOptions]="{standalone : true}" class="form-control" id="createurProjet" placeholder="nom du createur">
+            </div>
+
+            <div class="form-group">
+                <label>etudiants</label>
+                <input type="text" [(ngModel)]="etudiants" [ngModelOptions]="{standalone : true}" class="form-control" id="etudiantsProjet" placeholder="nom des etudiants">
             </div>
 
             <button type="submit" class="btn btn-primary mt-4" (click)="save()">save</button>

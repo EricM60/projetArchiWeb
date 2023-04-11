@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { ProjEnseignantComponent } from './proj-enseignant/proj-enseignant.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    AccueilComponent
+    AccueilComponent,
+    ProjEnseignantComponent
   ],
   imports: [
     BrowserModule,

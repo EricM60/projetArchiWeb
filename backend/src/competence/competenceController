@@ -5,7 +5,7 @@ var createCompetenceControllerFn = async (req,res) =>
     try 
     {
         console.log(req.body);
-        var status  = await utilisateurService.createCompetenceDBService(req.body);
+        var status  = await competenceService.createCompetenceDBService(req.body);
         console.log(status);
         if(status)
         {
